@@ -25,7 +25,9 @@
             <i class="el-icon-location"></i>
             <span>统计</span>
           </template>
+          <router-link to="/home/statistics/forgetcurve">
           <el-menu-item index="3-1">遗忘曲线</el-menu-item>
+          </router-link>
           <el-menu-item index="3-2">学习情况</el-menu-item>
         </el-submenu>
       </el-menu>

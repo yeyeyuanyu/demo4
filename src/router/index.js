@@ -16,8 +16,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Home',
-    component: () => import('@/views/Home.vue'),
+    name: 'Index',
     redirect: '/home'
   },
   {
@@ -36,8 +35,18 @@ const routes = [
         name: 'Review',
         component: () => import('@/views/main/Choose.vue')
       },
+      {
+        path: '/home/bookwords',
+        name: 'BookWords',
+        component: () => import('@/views/main/choose/BookWords.vue')
+      },
+      {
+        path: '/home/statistics/forgetcurve',
+        name: 'ForgetCurve',
+        component: () => import('../views/main/statistics/ForgetCurve.vue')
+      },
     ]
-  }
+  },
 ]
 
 const router = new VueRouter({
