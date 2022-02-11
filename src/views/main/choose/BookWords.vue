@@ -22,7 +22,7 @@
       </div>
     </transition>
     <el-button type="primary" @click="onSubmit" style="margin-right: 20px">立即选择</el-button>
-    <router-link to="Choose"><el-button>返回</el-button></router-link>
+    <router-link to="Choose"><el-button>随机选择</el-button></router-link>
   </el-card>
 </template>
 
@@ -33,7 +33,9 @@ export default {
     return {
       count: 0,
       form: {
+        //列表单词
         words: ["primary","Choose","value","margin-right"],
+        //选中的单词
         worded: []
       }
     }

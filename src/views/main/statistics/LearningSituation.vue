@@ -1,5 +1,5 @@
 <template>
-    <div id="box" style="width: 90%;height: 90%;"></div>
+  <div id="box" style="width: 90%;height: 90%;"></div>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 import echarts from "echarts";
 
 export default {
-  name: "ForgetCurve",
+  name: "LearningSituation",
   mounted() {
     this.drawChart();
   },
@@ -18,13 +18,14 @@ export default {
       //指定图表的配置项和数据
       var formatter = '{b0}';
       var j = 0;
-      formatter += '<br/>{a'+j+'}: {c'+j+'}%';
+      formatter += '<br/>{a'+j+'}: {c'+j+'}';
       var option={
         //标题
         title:{
-          text:'遗忘曲线'
+          text:'学习情况'
         },
         //工具箱
+        //tip展示数据
         tooltip:{
           formatter: formatter,
         },
@@ -51,19 +52,19 @@ export default {
           axisLabel:{
             show: true,
             interval: 'auto',
-            formatter: '{value}%',
+            formatter: '{value}',
           }
         },
         //数据-data是最终要显示的数据
         series:[
           {
-            name:'标准遗忘曲线',
-            type:'line',
-            data:[100,50,30,20,15,0]
+            name:'复习单词',
+            type:'bar',
+            data:[110,50,30,20,15,1]
           },
           {
-            name:'我的遗忘曲线',
-            type:'line',
+            name:'新学习单词',
+            type:'bar',
             data:[30,10,33,65,5,80]
           }
         ]

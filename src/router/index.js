@@ -41,9 +41,24 @@ const routes = [
         component: () => import('@/views/main/choose/BookWords.vue')
       },
       {
-        path: '/home/statistics/forgetcurve',
+        path: '/home/search',
+        name: 'Search',
+        component: () => import('@/views/main/Search.vue')
+      },
+      {
+        path: '/home/forgetcurve',
         name: 'ForgetCurve',
         component: () => import('../views/main/statistics/ForgetCurve.vue')
+      },
+      {
+        path: '/home/learningsituation',
+        name: 'LearningSituation',
+        component: () => import('../views/main/statistics/LearningSituation.vue')
+      },
+      {
+        path: '/home/user',
+        name: 'User',
+        component: () => import('../views/main/User.vue')
       },
     ]
   },
