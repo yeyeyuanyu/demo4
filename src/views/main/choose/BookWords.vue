@@ -59,7 +59,7 @@ export default {
   margin: auto 15%;
   font-size: 13px;
   text-align: left;
-  height: 500px;
+  min-height: 400px;
 }
 .button_space {
   margin: auto 15%;

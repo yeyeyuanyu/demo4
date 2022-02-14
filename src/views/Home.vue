@@ -4,15 +4,16 @@
 
     <el-header style="padding: 0px"><Header></Header></el-header>
 
-    <el-container style="">
+    <el-container style="width: 100%;height: 100%">
 
-      <el-aside style="height:100%;width: 210px"><Aside></Aside></el-aside>
+      <el-aside style="height:100%;width: 20%"><Aside></Aside></el-aside>
 
-      <el-main style="height: 100%"><Main></Main></el-main>
+      <el-container style="height:100%;width: 80%">
+      <el-main style="height: 80%"><Main></Main></el-main>
 
+      <el-footer style="padding: 0px"><Footer></Footer></el-footer>
+      </el-container>
     </el-container>
-
-    <el-footer style="padding: 0px"><Footer></Footer></el-footer>
 
   </el-container>
 
