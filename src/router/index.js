@@ -55,10 +55,28 @@ const routes = [
         name: 'LearningSituation',
         component: () => import('../views/main/statistics/LearningSituation.vue')
       },
+    ]
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import('../views/Home2.vue'),
+    redirect: '/user/message',
+    children: [
       {
-        path: '/home/user',
-        name: 'User',
-        component: () => import('../views/main/User.vue')
+        path: '/user/message',
+        name: 'Message',
+        component: () => import('@/views/user/Message.vue')
+      },
+      {
+        path: '/user/modify',
+        name: 'Modify',
+        component: () => import('@/views/user/Modify.vue')
+      },
+      {
+        path: '/user/setting',
+        name: 'Setting',
+        component: () => import('@/views/user/Setting.vue')
       },
     ]
   },

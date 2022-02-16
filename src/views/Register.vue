@@ -11,7 +11,9 @@
         <el-input type="password" v-model="ruleForm.rePassword" placeholder="请确认密码"  show-password autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
-        <el-input type="email" v-model="ruleForm.email" placeholder="请输入邮箱" autocomplete="off"></el-input>
+        <el-input type="email" v-model="ruleForm.email" placeholder="请输入邮箱" autocomplete="off">
+          <el-button slot="append" icon="el-icon-search"></el-button>
+        </el-input>
       </el-form-item>
       <el-form-item label="验证码" prop="verificationCode">
         <el-input type="verificationCode" v-model="ruleForm.verificationCode" placeholder="请输入验证码" autocomplete="off"></el-input>
