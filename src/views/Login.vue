@@ -53,7 +53,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log(this.ruleForm);
-          axios.post("/billboard/test",this.ruleForm)
+          axios.post("/yyuser/login",this.ruleForm)
               .then(function(res) {
                 const rs = res.data;
                 console.log(rs.data);

@@ -12,12 +12,15 @@
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
         <el-input type="email" v-model="ruleForm.email" placeholder="请输入邮箱" autocomplete="off">
-          <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-button id="count60" slot="append" type="primary"  @click="sendEmail(ruleForm.email)">发送验证码</el-button>
         </el-input>
       </el-form-item>
-      <el-form-item label="验证码" prop="verificationCode">
-        <el-input type="verificationCode" v-model="ruleForm.verificationCode" placeholder="请输入验证码" autocomplete="off"></el-input>
-      </el-form-item>
+      <transition name="el-fade-in">
+        <el-form-item v-show="ifVerificationCode" label="验证码" prop="verificationCode">
+          <el-input type="verificationCode" v-model="ruleForm.verificationCode" placeholder="请输入验证码" autocomplete="off"></el-input>
+        </el-form-item>
+      </transition>
+
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -28,6 +31,7 @@
 
 <script>
 import axios from "../plugins/axios";
+import $ from "jquery";
 export default {
   name: "Register",
   data() {
@@ -45,6 +49,7 @@ export default {
         email: '',
         verificationCode: '',
       },
+      ifVerificationCode: false,
       sett: {
         name: 'yyyy',
       },
@@ -59,6 +64,34 @@ export default {
     };
   },
   methods: {
+    sendEmail(email) {
+      if (this.isEmail(email)){
+        var val = 6;
+        var button = $("#count60");
+        button.attr("disabled",true);
+        button.html( val +"S");
+        var myVar = setInterval(function(){
+          button.html( --val +"S");
+          if (val<=0){
+            button.html("发送验证码");
+            button.removeAttr('disabled');
+            clearInterval(myVar);
+          }
+        }, 1000);
+        this.ifVerificationCode = true;
+      }
+    },
+    isEmail(email){
+      if (email.length == 0){
+        this.$message.error('邮箱不能为空');
+        return false;
+      }
+      if (email.search('@qq.com') < 0){
+        this.$message.error('邮箱格式错误');
+        return false;
+      }
+      return true
+    },
     submitForm(formName) {
       const that = this;
       this.$refs[formName].validate((valid) => {

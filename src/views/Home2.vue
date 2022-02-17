@@ -2,11 +2,11 @@
 
   <el-container style="width: 100%;height: 100%">
 
-    <el-header style="padding: 0px"><Header></Header></el-header>
+    <el-header style="padding: 0px"><Header active="3"></Header></el-header>
 
     <el-container style="width: 100%;height: 100%">
 
-      <el-aside style="height:100%;width: 20%"><Aside2></Aside2></el-aside>
+      <el-aside style="height:100%;"><Aside2></Aside2></el-aside>
 
       <el-container style="height:100%;width: 80%">
         <el-main style="height: 80%"><router-view></router-view></el-main>

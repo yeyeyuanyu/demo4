@@ -1,5 +1,16 @@
 <template>
   <div style="">
+    <el-dialog
+        :title="word.name"
+        :visible.sync="dialogVisible"
+        width="30%"
+        :before-close="handleClose">
+      <textarea style="width: 100%;height: 300px;resize: none;border: 0" v-model="word.zhuji2"></textarea>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <div><h5><span v-text="this.word.name">equal[ikwel]</span></h5></div>
@@ -20,7 +31,7 @@
           </div>
           <el-divider class="min-divider"></el-divider>
           <div>
-            <div>助记</div>
+            <div>助记<el-button @click="dialogVisible = true" style="margin: 2px;padding: 0"><i style="margin: 2px;" class="el-icon-plus"></i></el-button></div>
             <div v-for="(value) in this.word.zhuji" :key="value" v-text="value"></div>
           </div>
           </div>
@@ -52,17 +63,28 @@ export default {
     return{
       show: true,
       memory: 0,
+      dialogVisible: false,
       word: {
         name: "test[tss]",
         shiyi: ["[形]相等的;同等的","[da]dsaf"],
         liji: ["Nobody can equal him in intelligence","dsafjhkhdjkashkjhdkjgahjkdhg"],
-        zhuji: ["jkalsgkjhlakhgjklfadlkhjlkdf","afdagadfdaf"]
+        zhuji: ["jkalsgkjhlakhgjklfadlkhjlkdf","afdagadfdaf"],
+        zhuji2: "jkalsgkjhlakhgjklfadlk\nhjlkdfafdagadfdaf",
       }
     }
   },
   methods: {
     hide(){
       this.show = false;
+    },
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+          // eslint-disable-next-line no-unused-vars
+          .then(_ => {
+            done();
+          })
+          // eslint-disable-next-line no-unused-vars
+          .catch(_ => {});
     },
     nextWord(value){
       this.memory = value;
@@ -137,5 +159,8 @@ export default {
 .box-card {
   width: 70%;
   margin: auto;
+}
+textarea :active{
+  border: 0;
 }
 </style>

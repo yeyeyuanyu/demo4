@@ -2,11 +2,11 @@
 
   <el-container style="width: 100%;height: 100%">
 
-    <el-header style="padding: 0px"><Header></Header></el-header>
+    <el-header style="padding: 0px"><Header active="2"></Header></el-header>
 
     <el-container style="width: 100%;height: 100%">
 
-      <el-aside style="height:100%;width: 20%"><Aside></Aside></el-aside>
+      <el-aside style="height:100%;"><Aside></Aside></el-aside>
 
       <el-container style="height:100%;width: 80%">
       <el-main style="height: 80%"><Main></Main></el-main>
@@ -32,7 +32,7 @@ export default {
     Footer,
     Header,
     Aside,
-    Main
+    Main,
   },
   data(){
     return{
