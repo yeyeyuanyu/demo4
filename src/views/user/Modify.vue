@@ -1,10 +1,13 @@
 <template>
   <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <div><h5>个人设置</h5></div>
+    </div>
     <div style="position: relative;width: 100%">
       <div class="wordContent">
         <el-form ref="form" :model="form" label-width="80px" size="">
           <el-form-item label="头像">
-              <el-upload style="display: inline-block; width: 100px;height: 100px;"
+              <el-upload v-model="form.file" style="display: inline-block; width: 100px;height: 100px;"
                          class="avatar-uploader"
                          action="http://localhost:9000/upload"
                          :show-file-list="false"
@@ -42,13 +45,14 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+import axios from "../../plugins/axios";
 export default {
   name: 'Modify',
   data() {
     return {
-      imageUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
+      imageUrl: require("@/assets/web.jpg"),
       form: {
-        file: '',
         name: '',
         pwd: '11111',
         email: '',
@@ -58,9 +62,18 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log('submit!');
+      console.log(this.form);
+      axios.post("/upload",this.form)
+          .then(function(res) {
+            const rs = res.data;
+            console.log(rs.data);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
     },
     handleAvatarSuccess(res, file) {
+      this.form.file = file.raw;
       this.imageUrl = URL.createObjectURL(file.raw);
     },
     beforeAvatarUpload(file) {

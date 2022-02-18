@@ -5,7 +5,6 @@
         <div>
           <el-avatar style="width: 100px;height: 100px;" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
         </div>
-        <div><h5>夜夜</h5></div>
       </div>
       <div style="position: relative;width: 100%">
         <div class="wordContent">
