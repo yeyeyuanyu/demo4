@@ -12,17 +12,7 @@
                 <i class="el-icon-user"></i>
                 每日学习量
               </template>
-              <el-input style="width: 150px" v-model="count"></el-input>
-            </el-descriptions-item>
-            <el-descriptions-item>
-              <template slot="label">
-                <i class="el-icon-mobile-phone"></i>
-                记忆模式：看英文回忆中文
-              </template>
-              <el-select v-model="mode" style="width: 150px">
-                <el-option label="英中" value="EN"></el-option>
-                <el-option label="中英" value="ZH"></el-option>
-              </el-select>
+              <el-input @change="changeSetting" style="width: 150px" v-model="form.count"></el-input>
             </el-descriptions-item>
             <el-descriptions-item>
               <template slot="label">
@@ -30,7 +20,7 @@
                 每日提醒复习时间
               </template>
               <el-col style="width: 150px">
-                <el-time-picker placeholder="选择时间" v-model="time" style="width: 100%;"></el-time-picker>
+                <el-time-picker @change="changeSetting" placeholder="选择时间" v-model="form.time" style="width: 100%;"></el-time-picker>
               </el-col>
             </el-descriptions-item>
             <el-descriptions-item>
@@ -38,7 +28,7 @@
                 <i class="el-icon-mobile-phone"></i>
                 发音次数
               </template>
-              <el-select v-model="voice" style="width: 150px">
+              <el-select @change="changeSetting" v-model="form.voice" style="width: 150px">
                 <el-option label="一次" value="1"></el-option>
                 <el-option label="二次" value="2"></el-option>
                 <el-option label="三次" value="3"></el-option>
@@ -47,10 +37,30 @@
             <el-descriptions-item>
               <template slot="label">
                 <i class="el-icon-mobile-phone"></i>
+                发音时机
+              </template>
+              <el-select @change="changeSetting" v-model="form.voiceMode" style="width: 150px">
+                <el-option label="立即发音" value="NOW"></el-option>
+                <el-option label="点击发音" value="CLICK"></el-option>
+              </el-select>
+            </el-descriptions-item>
+            <el-descriptions-item>
+              <template slot="label">
+                <i class="el-icon-mobile-phone"></i>
+                记忆模式：看英文回忆中文
+              </template>
+              <el-select @change="changeSetting" v-model="form.mode" style="width: 150px">
+                <el-option label="英中" value="EN"></el-option>
+                <el-option label="中英" value="ZH"></el-option>
+              </el-select>
+            </el-descriptions-item>
+            <el-descriptions-item>
+              <template slot="label">
+                <i class="el-icon-mobile-phone"></i>
                 例句是否显示中文
               </template>
-              <el-switch
-                  v-model="value"
+              <el-switch @change="changeSetting"
+                  v-model="form.value"
                   active-text="显示">
               </el-switch>
             </el-descriptions-item>
@@ -70,16 +80,29 @@ export default {
   name: "Setting",
   data(){
     return{
-      count: 20,
-      mode: 'EN',
-      time: '',
-      voice: '1',
-      value: false,
+      form: {
+        count: 20,
+        mode: 'EN',
+        time: '',
+        voice: '1',
+        voiceMode: 'NOW',
+        value: false,
+      }
     }
   },
   methods: {
     hide(){
       this.show = false;
+    },
+    changeSetting(){
+      axios.post("/setting",this.form)
+          .then(function(res) {
+            const rs = res.data;
+            console.log(rs);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
     },
     nextWord(){
       /*axios.post("/billboard/test",this.memory)

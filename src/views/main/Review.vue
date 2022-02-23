@@ -5,7 +5,7 @@
         :visible.sync="dialogVisible"
         width="30%"
         :before-close="handleClose">
-      <textarea style="width: 100%;height: 300px;resize: none;border: 0" v-model="word.zhuji2"></textarea>
+      <textarea style="width: 100%;height: 300px;resize: none;border: none; cursor: pointer;outline: none;" v-model="word.zhuji2"></textarea>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -159,8 +159,5 @@ export default {
 .box-card {
   width: 70%;
   margin: auto;
-}
-textarea :active{
-  border: 0;
 }
 </style>
