@@ -76,6 +76,5 @@ export default {
 <style scoped>
 .webImg{
   width:210px; height:60px;overflow: hidden;
-  background-image: url();
 }
 </style>

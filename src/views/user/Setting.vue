@@ -20,7 +20,8 @@
                 每日提醒复习时间
               </template>
               <el-col style="width: 150px">
-                <el-time-picker @change="changeSetting" placeholder="选择时间" v-model="form.time" style="width: 100%;"></el-time-picker>
+                <el-time-picker value-format="HH:mm" format="HH:mm"
+                    @change="changeSetting" placeholder="选择时间" v-model="form.time" style="width: 100%;"></el-time-picker>
               </el-col>
             </el-descriptions-item>
             <el-descriptions-item>
